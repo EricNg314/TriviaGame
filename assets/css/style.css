@@ -23,7 +23,7 @@ body{
 }
 
 #jumbotronTxt {
-    color: rgb(245,245,220);
+    /* color: rgb(245,245,220); */
     font-weight: bold;
     font-family: 'Press Start 2P', cursive;
 }
