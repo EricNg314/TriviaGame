@@ -17,8 +17,10 @@
 
 //========== Clicking Event to Question ===================================================//
 
-//Start Timer
+//Start Delay Timer
 //Display question, image, choices and timer.
+//Click event to check answer.
+
 
 
 //========== Clicking Event to Question(Choice Clicked) ===================================================//
@@ -62,50 +64,72 @@
 
 $(document).ready(function () {
 
-var questionArr = [{
-    question: "The answer is 1",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 0
-}, {
-    question: "The answer is 2",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 1
-}, {
-    question: "The answer is 3",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 2
-}, {
-    question: "The answer is 4",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 3
-}, {
-    question: "The answer is 1",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 0
-}, {
-    question: "The answer is 2",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 1
-}, {
-    question: "The answer is 3",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 2
-}, {
-    question: "The answer is 4",
-    image: "",
-    choices: ["1", "2", "3", "4"],
-    answer: 3
-},]
+    var questionArr = [{
+        question: "The answer is 1",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 0
+    }, {
+        question: "The answer is 2",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 1
+    }, {
+        question: "The answer is 3",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 2
+    }, {
+        question: "The answer is 4",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 3
+    }, {
+        question: "The answer is 1",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 0
+    }, {
+        question: "The answer is 2",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 1
+    }, {
+        question: "The answer is 3",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 2
+    }, {
+        question: "The answer is 4",
+        image: "",
+        choices: ["1", "2", "3", "4"],
+        answer: 3
+    }]
 
+    var timerInterval;
+    var clockRunning = false;
+    var clockTimer = {
+        time: 0,
+        reset: function () {
+            clockTimer["time"] = 15;
+        },
+        start: function () {
+            if(!clockRunning){
+                timerInterval = setInterval(clockTimer.timerDisplay, 1000);
+            }
+        },
+        stop: function () {
 
+        },
+        timerDisplay: function(){
+            clockTimer["time"]--;
+            console.log(clockTimer.time)
+            $("#timerClock").text(clockTimer.time);
+        }
 
+    }
+
+clockTimer.start;
 
 
 
