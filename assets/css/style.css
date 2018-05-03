@@ -31,9 +31,14 @@ body{
 #instructionID {
     border-bottom: 3px solid lightgrey;
 }
-
+/* 
 #videoID {
     display:block;
+} */
+
+#gameBoxID {
+    /* max-height:90%; */
+    align-items:center;
 }
 
 #scoreBoardAndImg {

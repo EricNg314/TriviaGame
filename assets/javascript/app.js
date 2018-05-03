@@ -62,8 +62,12 @@
 //create a function to reset timer.
 
 
+
+
 $(document).ready(function () {
 
+
+    console.log("testing")
     var questionArr = [{
         question: "The answer is 1",
         image: "",
@@ -106,31 +110,39 @@ $(document).ready(function () {
         answer: 3
     }]
 
+    //creating basic timer and setting to 15 seconds.
     var timerInterval;
     var clockRunning = false;
     var clockTimer = {
-        time: 0,
+        time: 15,
         reset: function () {
             clockTimer["time"] = 15;
         },
         start: function () {
-            if(!clockRunning){
+            if (!clockRunning) {
                 timerInterval = setInterval(clockTimer.timerDisplay, 1000);
+                clockRunning = true;
             }
         },
         stop: function () {
-
+            clearInterval(timerInterval);
+            clockRunning = false;
         },
-        timerDisplay: function(){
+        timerDisplay: function () {
             clockTimer["time"]--;
-            console.log(clockTimer.time)
-            $("#timerClock").text(clockTimer.time);
+            // console.log(clockTimer.time)
+            $("#timerClock").text(clockTimer.time + " seconds.");
         }
 
     }
 
-clockTimer.start;
+    $("#startGame").on("click", function(){
+        $("#jumbotronID").addClass('d-none') //Hiding main page jumbotron.
+        $("#gameBoxID").removeClass('d-none'); //Unhiding question box
 
+        clockTimer.start();
+
+    });
 
 
 
