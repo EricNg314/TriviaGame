@@ -42,23 +42,24 @@
     <audio id="audioTagLose" src="#" preload="auto"></audio>
 
 
+<!-- d-none -->
 
-
-    <header id="jumbotronID" class="jumbotron jumbotron-fluid animated slideInLeft" alt="Sample Text">
+<!-- Intro Page -->
+    <header id="jumbotronID" class="jumbotron jumbotron-fluid animated slideInLeft d-none" alt="Sample Text">
         <div class="container pb-0">
             <h1 id="jumbotronTxt" class="display-4 text-center">Welcome to Economics Trivia!</h1>
             <br>
             <br>
             <div class="row">
                 <p class="lead mx-auto align-bottom  pt-5">
-                    <a id="helpBtn" class="btn btn-primary btn-lg" href="#" role="button">Instructions</a>
+                    <a id="startGame" class="btn btn-primary btn-lg" href="#" role="button">Start Game</a>
                 </p>
             </div>
         </div>
     </header>
 
-    <!-- Game Box -->
-    <div class="container">
+    <!-- Game Question Box -->
+    <div class="container ">
 
         <section id="gameIndex" class="card">
             <div class="card-header">
@@ -94,9 +95,7 @@
         <section class="card">
             <div class="card-header">
                 <h4 class="card-title">Sample text.</h4>
-                <div class="card-body text-center">
-                    <h1 id="user-pick">0</h1>
-                </div>
+
                 <!-- Game Buttons -->
                 <article class="row mx-auto">
                     <figure class="card mx-auto" style="width: 12rem;">
@@ -126,36 +125,74 @@
                 </article>
 
                 <!-- instructions -->
-                <article class="row mx-auto">
+                <!-- <article class="row mx-auto">
                     <figure id="instructions" class="card w-100 mt-5">
-                        <!-- <div class=" " style="width: 12rem;"> -->
                         <figcaption class="card-body">
                             <h5 id="instructionID" class="card-title">Instructions/About</h5>
                             <h6 class="card-subtitle mb-2 text-muted"></h6>
 
-                            <div class="card-body">
+                            <div class="card-body"> -->
 
                                 <!-- Youtube video if a good one is found. -->
                                 <!-- <iframe class="float-left mr-2" width="315" height="177" src="#"
                                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
 
-                                <p class="card-text">Where you'll learn all about economics in asap.</p>
+                                <!-- <p class="card-text">Where you'll learn all about economics in asap.</p>
                                 <p class="card-text">Well... just some important principles. </p>
                                 <p>Sample text.</p>
                             </div>
 
                         </figcaption>
-                        <!-- </div> -->
                         <div class="row">
                             <p class="lead mx-auto pt-3">
                                 <a class="btn btn-primary btn-md" href="#gameIndex" role="button">Back To Game</a>
                             </p>
                         </div>
                     </figure>
-                </article>
+                </article> -->
             </div>
         </section>
     </div>
+
+    <!-- Scoreboard Box-->
+    <div class="container ">
+
+        <section id="gameIndex" class="card">
+            <div class="card-header">
+                <h3 class="card-title">Sample text</h3>
+            </div>
+
+            <div id="scoreBoardAndImg" class="card">
+                <div class="card-body float-left">
+                    <h5 class="card-title">Scores</h5>
+                    <h6 class="card-subtitle mb-0 text-muted">Correct: </h6>
+                    <p id="correct" class="mr-2"></p>
+                    <h6 class="card-subtitle mb-0 text-muted">Incorrect: </h6>
+                    <p id="incorrect" class="mr-2"></p>
+                </div>
+                             
+                <div class="card-body float-right">
+                    <h5 class="card-title">Timer</h5>
+                    <p id="timerClock" class="mr-2"></p>
+                </div>
+
+                        <!-- sample image question next to score for trivia-->
+                <div class="align-center mx-auto" style="width: 12rem;">
+                    <img id="questionImg" class="card-img-top" src="#" alt="Image of Question">
+                </div>
+
+            </div>
+            <div class="card-body text-center">
+                <h1 id="question">???</h1>
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+
 </body>
 
 </html>

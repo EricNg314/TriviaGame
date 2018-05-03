@@ -14,12 +14,9 @@ body{
     background-repeat: no-repeat;
     padding: 2rem 2rem;
     display:flex;
-    /* height: inherit; */
-    /* background-color: #17234E; */
-
-    /* background-position: center;
-    -webkit-background-size: cover;
-    background-size: cover; */
+    max-height: 100%;
+    align-items: center;
+    min-height: 100vh;
 }
 
 #jumbotronTxt {
@@ -28,7 +25,7 @@ body{
     font-family: 'Press Start 2P', cursive;
 }
 
-#helpBtn {
+#startGame {
     background-color: rgba(0, 255, 255,.85);
 }
 #instructionID {
