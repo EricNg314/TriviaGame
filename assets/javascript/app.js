@@ -98,9 +98,9 @@ $(document).ready(function () {
         choices: ["Lots of rain for wheat farmers.", "Minimum wage decrease.", "Happy New Year occurs", "Monday night."],
         answer: 2
     }, {
-        question: "What is an example of a positive shift in supply for alcohol?",
+        question: "What is an example of a negative shift in supply for alcohol?",
         image: "assets/images/PAndQ_ShiftInSupply.gif",
-        choices: ["Lots of rain for wheat farmers.", "Minimum wage decrease.", "Happy New Year occurs", "Monday night."],
+        choices: ["Less rain for wheat farmers.", "Minimum wage decrease.", "Happy New Year occurs", "Monday night."],
         answer: 0
     }];
 
