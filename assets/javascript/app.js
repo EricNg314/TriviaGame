@@ -68,20 +68,20 @@ $(document).ready(function () {
 
     //========== Initialization Part 1 ===================================================//
     var questionArr = [{
-        question: "The answer is 1",
-        image: "http://via.placeholder.com/50x50",
-        choices: ["1", "2", "3", "4"],
-        answer: 0
-    }, {
-        question: "The answer is 2",
-        image: "http://via.placeholder.com/50x50",
-        choices: ["1", "2", "3", "4"],
-        answer: 1
-    }, {
-        question: "The answer is 3",
-        image: "http://via.placeholder.com/50x50",
-        choices: ["1", "2", "3", "4"],
+        question: "Based on the graph above when are people more willing to buy?",
+        image: "assets/images/PAndQ_Demand.gif",
+        choices: ["Point: A", "Point: B", "Point: C", "N/A"],
         answer: 2
+    }, {
+        question: "Based on the graph above when are people more willing to sell?",
+        image: "assets/images/PAndQ_Supply.gif",
+        choices: ["Point: A", "Point: B", "Point: C", "N/A"],
+        answer: 2
+    }, {
+        question: "When does equilibrium occur?",
+        image: "assets/images/PAndQ_Equilibrium.gif",
+        choices: ["When everyone is happy.", "When price is low and quantity is high.", "When supply and demand is high.", "When price and quantity match."],
+        answer: 3
     }, {
         question: "The answer is 4",
         image: "http://via.placeholder.com/50x50",
@@ -103,12 +103,10 @@ $(document).ready(function () {
     var clockTimer = {
         time: 15,
         reset: function () {
-            console.log("Step reset applied." + errorCnt++)
             clockTimer["time"] = 15;
         },
         start: function () {
             if (!clockRunning) {
-                console.log("Step start applied." + errorCnt++)
                 timerInterval = setInterval(clockTimer.timerDisplay, 1000);
                 clockRunning = true;
             }
@@ -128,8 +126,7 @@ $(document).ready(function () {
                 clearInterval(timerInterval);
                 var noInput = -1; //noInput = -1, arrays start at 0.
 
-                checkAnswer(noInput)
-                clockTimer["stop"];
+                checkAnswer(noInput);
             }
         }
 
@@ -202,6 +199,7 @@ $(document).ready(function () {
                 questionArr[currQuestion]["choices"][realAnswer]);
         }
 
+        clockTimer["stop"]();
 
         currQuestion += 1; //Adding 1 to complete current question.
         if (currQuestion === questionArr.length) {
