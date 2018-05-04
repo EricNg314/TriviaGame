@@ -1,6 +1,7 @@
 
 body{
     font-family: 'Coustard', serif;
+    max-height: 100%;
 }
 
 .card{

@@ -89,6 +89,8 @@ $(document).ready(function () {
         answer: 3
     }];
 
+    var errorCnt = 0;
+
     var currQuestion = 0;
     var corrAnswer = 0;
     var incorrAnswer = 0;
@@ -99,12 +101,14 @@ $(document).ready(function () {
     var timerInterval;
     var clockRunning = false;
     var clockTimer = {
-        time: 10,
+        time: 15,
         reset: function () {
-            clockTimer["time"] = 10;
+            console.log("Step reset applied." + errorCnt++)
+            clockTimer["time"] = 15;
         },
         start: function () {
             if (!clockRunning) {
+                console.log("Step start applied." + errorCnt++)
                 timerInterval = setInterval(clockTimer.timerDisplay, 1000);
                 clockRunning = true;
             }
@@ -113,6 +117,7 @@ $(document).ready(function () {
             if (clockRunning) {
                 clearInterval(timerInterval);
                 clockRunning = false;
+
             }
         },
         timerDisplay: function () {
@@ -122,8 +127,9 @@ $(document).ready(function () {
             if (clockTimer["time"] < 1) {
                 clearInterval(timerInterval);
                 var noInput = -1; //noInput = -1, arrays start at 0.
+
                 checkAnswer(noInput)
-                clockRunning = false;
+                clockTimer["stop"];
             }
         }
 
@@ -148,15 +154,14 @@ $(document).ready(function () {
         noAnswer = 0;
     }
 
-
     function applyQuestion() {
         $("#answerMsg").text("Select an answer below:");
         $("#question").empty();
         $("#questionImg").empty();
         clockTimer["reset"]();
-        // console.log(clockTimer["timer"])
 
-        var questionNumb = currQuestion + 1
+        var questionNumb = 0;
+        questionNumb = currQuestion + 1;
 
         $("#questionNumb").text("Question " + questionNumb + " out of " + questionArr.length);
         $("#question").text(questionArr[currQuestion]["question"]);
@@ -168,39 +173,41 @@ $(document).ready(function () {
 
         clockTimer["start"]();
 
-        $(".answerChoice").on("click", function () {
-            var userSelection = $(this).attr("value");
-            clockTimer["stop"]();
-            answered = true;
-            checkAnswer(userSelection)
-        });
-
-
     }
 
+    $(".answerChoice").on("click", function () {
+        var userSelection = $(this).attr("value");
+        clockTimer["stop"]();
+        answered = true;
+        checkAnswer(userSelection)
+    });
+
     function checkAnswer(userChoice) {
+        console.log("==================================");
 
         if (userChoice === -1) {
             noAnswer += 1;
             var realAnswer = questionArr[currQuestion]["answer"] //Applying as a new variable to be used in object.
             $("#question").text("You ran out of time the answer was: " +
                 questionArr[currQuestion]["choices"][realAnswer]);
+
         } else if (userChoice - 1 === questionArr[currQuestion]["answer"]) {
             corrAnswer += 1;
             $("#question").text("You are correct, good job!")
+
         } else if (userChoice - 1 !== questionArr[currQuestion]["answer"]) {
             incorrAnswer += 1;
             var realAnswer = questionArr[currQuestion]["answer"]
             $("#question").text("Incorrect the answer was: " +
                 questionArr[currQuestion]["choices"][realAnswer]);
         }
-        clearInterval(timerInterval)
+
+
         currQuestion += 1; //Adding 1 to complete current question.
         if (currQuestion === questionArr.length) {
-            setTimeout(displayScore, 3000);
+            setTimeout(displayScore, 4000);
         } else {
-            console.log("Going to next question: " + clockTimer["time"])
-            setTimeout(applyQuestion, 3000);
+            setTimeout(applyQuestion, 4000);
         }
     }
 
@@ -209,8 +216,9 @@ $(document).ready(function () {
         $("#scoreBoxID").removeClass('d-none'); //Unhiding question box
 
         $("#correct").text("Correct: " + corrAnswer);
-        $("#incorrect").text("Correct: " + incorrAnswer);
+        $("#incorrect").text("Incorrect: " + incorrAnswer);
         $("#unanswered").text("Unaswered: " + noAnswer);
         $("#scoreBoardMsg").text("Thanks for playing, hope it was enlightening!")
     }
+
 });
