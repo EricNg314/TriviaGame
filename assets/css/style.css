@@ -31,14 +31,12 @@ body{
 
 #startGame {
     background-color: rgba(0, 255, 255,.85);
+    color: black;
 }
 #instructionID {
     border-bottom: 3px solid lightgrey;
 }
-/* 
-#videoID {
-    display:block;
-} */
+
 
 #gameBoxID {
     /* max-height:90%; */
