@@ -1,0 +1,69 @@
+
+body{
+    background-image: url("../images/background-business.jpg");
+    font-family: 'Coustard', serif;
+    margin-top: auto;
+    margin-bottom: auto;
+    max-height: 100%;
+}
+
+
+.card{
+    background:rgba(255,255,255,0.7);
+}
+
+
+#jumbotronID {
+    background-image: url("../images/jumbotron_Image.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 2rem 2rem;
+    display:flex;
+    max-height: 100%;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#jumbotronTxt {
+    /* color: rgb(245,245,220); */
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#startGame {
+    background-color: rgba(0, 255, 255,.85);
+    color: black;
+}
+#instructionID {
+    border-bottom: 3px solid lightgrey;
+}
+
+
+#gameBoxID {
+    /* max-height:90%; */
+    align-items:center;
+}
+
+#timerBoard {
+    display: block;
+    border: none;
+    background: none;
+}
+
+#scoreBoardAndImg {
+    display: block;
+    border: none;
+    background: none;
+}
+
+#instructions{
+    background-color: rgba(255,255,255,0.70);
+}
+
+@media screen and (max-width: 640px) {
+    #jumbotronTxt{
+        font-size: 1.9em;
+
+    }
+
+}
