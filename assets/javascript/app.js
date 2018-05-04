@@ -113,14 +113,15 @@ $(document).ready(function () {
     var corrAnswer = 0;
     var incorrAnswer = 0;
     var noAnswer = 0;
+    var answered = false;
 
     //creating basic timer and setting to 15 seconds.
     var timerInterval;
     var clockRunning = false;
     var clockTimer = {
-        time: 15,
+        time: 10,
         reset: function () {
-            clockTimer["time"] = 15;
+            clockTimer["time"] = 10;
         },
         start: function () {
             if (!clockRunning) {
@@ -129,13 +130,20 @@ $(document).ready(function () {
             }
         },
         stop: function () {
-            clearInterval(timerInterval);
-            clockRunning = false;
+            if (clockRunning) {
+                clearInterval(timerInterval);
+                clockRunning = false;
+            }
         },
         timerDisplay: function () {
             clockTimer["time"]--;
             // console.log(clockTimer.time)
             $("#timerClock").text(clockTimer.time + " seconds.");
+            if (clockTimer["time"] < 1) {
+                clearInterval(timerInterval);
+                noAnswer = -1; //noAnswer = -1, arrays start at 0.
+                checkAnswer(noAnswer)
+            }
         }
 
     }
@@ -164,19 +172,57 @@ $(document).ready(function () {
         $("#answerMsg").text("Select an answer below:");
         $("#question").empty();
         $("#questionImg").empty();
-        clockTimer.start();
 
-        var dispQuestNumb = currQuestion + 1
-        $("#questionNumb").text("Question " + dispQuestNumb + " out of " + questionArr.length);
+        var questionNumb = currQuestion + 1
+
+        $("#questionNumb").text("Question " + questionNumb + " out of " + questionArr.length);
         $("#question").text(questionArr[currQuestion]["question"]);
         $("#answer-1").text(questionArr[currQuestion]["choices"][0]);
         $("#answer-2").text(questionArr[currQuestion]["choices"][1]);
         $("#answer-3").text(questionArr[currQuestion]["choices"][2]);
         $("#answer-4").text(questionArr[currQuestion]["choices"][3]);
 
+        clockTimer.start();
+
+        $(".answerChoice").on("click", function () {
+            // console.log($(this).attr("value"));
+            var userSelection = $(this).attr("value");
+            clockTimer.stop();
+            answered = true;
+            checkAnswer(userSelection)
+        });
+
+
     }
 
+    function checkAnswer(userChoice) {
 
+        if (userChoice === -1) {
+            noAnswer += 1;
+            var realAnswer = questionArr[currQuestion]["answer"]
+            $("#question").text("You ran out of time the answer was: " +
+                questionArr[currQuestion]["choices"][realAnswer]);
+        } else if (userChoice - 1 === questionArr[currQuestion]["answer"]) {
+            corrAnswer += 1;
+            $("#question").text("You are correct, good job!")
+        } else if (userChoice - 1 !== questionArr[currQuestion]["answer"]) {
+            incorrAnswer += 1;
+            var realAnswer = questionArr[currQuestion]["answer"]
+            $("#question").text("Incorrect the answer was: " +
+                questionArr[currQuestion]["choices"][realAnswer]);
+        }
 
+        currQuestion += 1; //Adding 1 to complete current question.
+        if (currQuestion === questionArr.length) {
+            setTimeout(displayScore, 5000);
+            displayScore();
+        } else {
+            setTimeout(applyQuestion, 5000);
+        }
+    }
 
+    function displayScore() {
+        $("#gameBoxID").addClass('d-none') //Hiding main page jumbotron.
+        $("#scoreBoxID").removeClass('d-none'); //Unhiding question box
+    }
 });
