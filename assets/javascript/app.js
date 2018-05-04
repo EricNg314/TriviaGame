@@ -66,8 +66,7 @@
 
 $(document).ready(function () {
 
-
-    console.log("testing")
+    //========== Initialization Part 1 ===================================================//
     var questionArr = [{
         question: "The answer is 1",
         image: "",
@@ -110,6 +109,11 @@ $(document).ready(function () {
         answer: 3
     }]
 
+    var currQuestion = 0;
+    var corrAnswer = 0;
+    var incorrAnswer = 0;
+    var noAnswer = 0;
+
     //creating basic timer and setting to 15 seconds.
     var timerInterval;
     var clockRunning = false;
@@ -136,17 +140,41 @@ $(document).ready(function () {
 
     }
 
-    $("#startGame").on("click", function(){
+    $("#startGame").on("click", function () {
         $("#jumbotronID").addClass('d-none') //Hiding main page jumbotron.
         $("#gameBoxID").removeClass('d-none'); //Unhiding question box
 
-        clockTimer.start();
+        resetGame();
+        applyQuestion();
 
     });
 
+    function resetGame() {
+        $("#correct").empty();
+        $("#incorrect").empty();
+        $("#unanswered").empty();
+        currQuestion = 0;
+        corrAnswer = 0;
+        incorrAnswer = 0;
+        noAnswer = 0;
+    }
 
 
+    function applyQuestion() {
+        $("#answerMsg").text("Select an answer below:");
+        $("#question").empty();
+        $("#questionImg").empty();
+        clockTimer.start();
 
+        var dispQuestNumb = currQuestion + 1
+        $("#questionNumb").text("Question " + dispQuestNumb + " out of " + questionArr.length);
+        $("#question").text(questionArr[currQuestion]["question"]);
+        $("#answer-1").text(questionArr[currQuestion]["choices"][0]);
+        $("#answer-2").text(questionArr[currQuestion]["choices"][1]);
+        $("#answer-3").text(questionArr[currQuestion]["choices"][2]);
+        $("#answer-4").text(questionArr[currQuestion]["choices"][3]);
+
+    }
 
 
 
