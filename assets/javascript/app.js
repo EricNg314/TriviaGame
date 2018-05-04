@@ -69,22 +69,22 @@ $(document).ready(function () {
     //========== Initialization Part 1 ===================================================//
     var questionArr = [{
         question: "The answer is 1",
-        image: "",
+        image: "http://via.placeholder.com/50x50",
         choices: ["1", "2", "3", "4"],
         answer: 0
     }, {
         question: "The answer is 2",
-        image: "",
+        image: "http://via.placeholder.com/50x50",
         choices: ["1", "2", "3", "4"],
         answer: 1
     }, {
         question: "The answer is 3",
-        image: "",
+        image: "http://via.placeholder.com/50x50",
         choices: ["1", "2", "3", "4"],
         answer: 2
     }, {
         question: "The answer is 4",
-        image: "",
+        image: "http://via.placeholder.com/50x50",
         choices: ["1", "2", "3", "4"],
         answer: 3
     }];
@@ -153,24 +153,24 @@ $(document).ready(function () {
         $("#answerMsg").text("Select an answer below:");
         $("#question").empty();
         $("#questionImg").empty();
-        // clockTimer["reset"]();
+        clockTimer["reset"]();
         // console.log(clockTimer["timer"])
 
         var questionNumb = currQuestion + 1
 
         $("#questionNumb").text("Question " + questionNumb + " out of " + questionArr.length);
         $("#question").text(questionArr[currQuestion]["question"]);
+        $("#questionImg").attr("src", questionArr[currQuestion]["image"]);
         $("#answer-1").text(questionArr[currQuestion]["choices"][0]);
         $("#answer-2").text(questionArr[currQuestion]["choices"][1]);
         $("#answer-3").text(questionArr[currQuestion]["choices"][2]);
         $("#answer-4").text(questionArr[currQuestion]["choices"][3]);
 
-        clockTimer.start();
+        clockTimer["start"]();
 
         $(".answerChoice").on("click", function () {
-            // console.log($(this).attr("value"));
             var userSelection = $(this).attr("value");
-            clockTimer.stop();
+            clockTimer["stop"]();
             answered = true;
             checkAnswer(userSelection)
         });
@@ -182,7 +182,7 @@ $(document).ready(function () {
 
         if (userChoice === -1) {
             noAnswer += 1;
-            var realAnswer = questionArr[currQuestion]["answer"]
+            var realAnswer = questionArr[currQuestion]["answer"] //Applying as a new variable to be used in object.
             $("#question").text("You ran out of time the answer was: " +
                 questionArr[currQuestion]["choices"][realAnswer]);
         } else if (userChoice - 1 === questionArr[currQuestion]["answer"]) {
@@ -198,8 +198,8 @@ $(document).ready(function () {
         currQuestion += 1; //Adding 1 to complete current question.
         if (currQuestion === questionArr.length) {
             setTimeout(displayScore, 3000);
-            // displayScore();
         } else {
+            console.log("Going to next question: " + clockTimer["time"])
             setTimeout(applyQuestion, 3000);
         }
     }
@@ -211,5 +211,6 @@ $(document).ready(function () {
         $("#correct").text("Correct: " + corrAnswer);
         $("#incorrect").text("Correct: " + incorrAnswer);
         $("#unanswered").text("Unaswered: " + noAnswer);
+        $("#scoreBoardMsg").text("Thanks for playing, hope it was enlightening!")
     }
 });
