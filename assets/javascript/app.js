@@ -70,12 +70,12 @@ $(document).ready(function () {
     var questionArr = [{
         question: "Based on the graph above when are people more willing to buy?",
         image: "assets/images/PAndQ_Demand.gif",
-        choices: ["Point: A", "Point: B", "Point: C", "N/A"],
+        choices: ["Point: A", "Point: B", "Point: C", "Answer N/A in graph."],
         answer: 2
     }, {
         question: "Based on the graph above when are people more willing to sell?",
         image: "assets/images/PAndQ_Supply.gif",
-        choices: ["Point: A", "Point: B", "Point: C", "N/A"],
+        choices: ["Point: A", "Point: B", "Point: C", "Answer N/A in graph."],
         answer: 2
     }, {
         question: "When does equilibrium occur?",
@@ -83,10 +83,25 @@ $(document).ready(function () {
         choices: ["When everyone is happy.", "When price is low and quantity is high.", "When supply and demand is high.", "When price and quantity match."],
         answer: 3
     }, {
-        question: "The answer is 4",
-        image: "http://via.placeholder.com/50x50",
-        choices: ["1", "2", "3", "4"],
+        question: "What happens at P(1)?",
+        image: "assets/images/PAndQ_ExcessSupply.gif",
+        choices: ["Too much supply.", "High demand.", "Better equilibrium.", "Below equilibrium."],
+        answer: 0
+    }, {
+        question: "What happens at P(1)?",
+        image: "assets/images/PAndQ_ExcessDemand.gif",
+        choices: ["Everyone wants a job.", "Suppliers are happy.", "Too much quantity.", "Everyone wants to buy."],
         answer: 3
+    }, {
+        question: "What is an example of a positive shift in demand for alcohol?",
+        image: "assets/images/PAndQ_ShiftInDemand.gif",
+        choices: ["Lots of rain for wheat farmers.", "Minimum wage decrease.", "Happy New Year occurs", "Monday night."],
+        answer: 2
+    }, {
+        question: "What is an example of a positive shift in supply for alcohol?",
+        image: "assets/images/PAndQ_ShiftInSupply.gif",
+        choices: ["Lots of rain for wheat farmers.", "Minimum wage decrease.", "Happy New Year occurs", "Monday night."],
+        answer: 0
     }];
 
     var errorCnt = 0;
@@ -101,9 +116,9 @@ $(document).ready(function () {
     var timerInterval;
     var clockRunning = false;
     var clockTimer = {
-        time: 15,
+        time: 0,
         reset: function () {
-            clockTimer["time"] = 15;
+            clockTimer["time"] = 30;
         },
         start: function () {
             if (!clockRunning) {
@@ -180,7 +195,6 @@ $(document).ready(function () {
     });
 
     function checkAnswer(userChoice) {
-        console.log("==================================");
 
         if (userChoice === -1) {
             noAnswer += 1;

@@ -1,8 +1,11 @@
 
 body{
     font-family: 'Coustard', serif;
+    margin-top: auto;
+    margin-bottom: auto;
     max-height: 100%;
 }
+
 
 .card{
     background:rgba(255,255,255,0.7);
@@ -40,6 +43,12 @@ body{
 #gameBoxID {
     /* max-height:90%; */
     align-items:center;
+}
+
+#timerBoard {
+    display: block;
+    border: none;
+    background: none;
 }
 
 #scoreBoardAndImg {
