@@ -1,5 +1,6 @@
 
 body{
+    background-image: url("../images/background-business.jpg");
     font-family: 'Coustard', serif;
     margin-top: auto;
     margin-bottom: auto;
@@ -13,7 +14,7 @@ body{
 
 
 #jumbotronID {
-    background-image: url("#");
+    background-image: url("../images/jumbotron_Image.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     padding: 2rem 2rem;

@@ -20,6 +20,8 @@ Example of a jQuery created in a javascript file, including the use of timers an
 - Array of potential outputs using objects
 - Output to an html document with specified ID using jQuery
 - Creating and calling functions
+- Application of animate.css (https://github.com/daneden/animate.css)
+
 
 ### CSS examples:
 - Applying online fonts.
