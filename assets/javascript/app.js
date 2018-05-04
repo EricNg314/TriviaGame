@@ -87,27 +87,7 @@ $(document).ready(function () {
         image: "",
         choices: ["1", "2", "3", "4"],
         answer: 3
-    }, {
-        question: "The answer is 1",
-        image: "",
-        choices: ["1", "2", "3", "4"],
-        answer: 0
-    }, {
-        question: "The answer is 2",
-        image: "",
-        choices: ["1", "2", "3", "4"],
-        answer: 1
-    }, {
-        question: "The answer is 3",
-        image: "",
-        choices: ["1", "2", "3", "4"],
-        answer: 2
-    }, {
-        question: "The answer is 4",
-        image: "",
-        choices: ["1", "2", "3", "4"],
-        answer: 3
-    }]
+    }];
 
     var currQuestion = 0;
     var corrAnswer = 0;
@@ -141,8 +121,9 @@ $(document).ready(function () {
             $("#timerClock").text(clockTimer.time + " seconds.");
             if (clockTimer["time"] < 1) {
                 clearInterval(timerInterval);
-                noAnswer = -1; //noAnswer = -1, arrays start at 0.
-                checkAnswer(noAnswer)
+                var noInput = -1; //noInput = -1, arrays start at 0.
+                checkAnswer(noInput)
+                clockRunning = false;
             }
         }
 
@@ -172,6 +153,8 @@ $(document).ready(function () {
         $("#answerMsg").text("Select an answer below:");
         $("#question").empty();
         $("#questionImg").empty();
+        // clockTimer["reset"]();
+        // console.log(clockTimer["timer"])
 
         var questionNumb = currQuestion + 1
 
@@ -211,18 +194,22 @@ $(document).ready(function () {
             $("#question").text("Incorrect the answer was: " +
                 questionArr[currQuestion]["choices"][realAnswer]);
         }
-
+        clearInterval(timerInterval)
         currQuestion += 1; //Adding 1 to complete current question.
         if (currQuestion === questionArr.length) {
-            setTimeout(displayScore, 5000);
-            displayScore();
+            setTimeout(displayScore, 3000);
+            // displayScore();
         } else {
-            setTimeout(applyQuestion, 5000);
+            setTimeout(applyQuestion, 3000);
         }
     }
 
     function displayScore() {
         $("#gameBoxID").addClass('d-none') //Hiding main page jumbotron.
         $("#scoreBoxID").removeClass('d-none'); //Unhiding question box
+
+        $("#correct").text("Correct: " + corrAnswer);
+        $("#incorrect").text("Correct: " + incorrAnswer);
+        $("#unanswered").text("Unaswered: " + noAnswer);
     }
 });
